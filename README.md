@@ -1,61 +1,162 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+📚 E-Book Learning Web Application
+Laravel 12.x + TailwindCSS + MySQL
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+FullStack Developer Challenge — PT Kreasi Bintang Edukasi
 
-## About Laravel
+🎯 Project Purpose
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplikasi web ini dikembangkan untuk memenuhi tantangan FullStack Developer Challenge.
+Tujuannya adalah membuat web application sederhana menggunakan PHP (Laravel Framework) dan TailwindCSS, yang menampilkan daftar e-book pembelajaran lengkap dengan fitur login, session management, serta PDF viewer dengan keamanan (no download, no copy).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+🧩 Project Overview
+Item	Deskripsi
+Nama Aplikasi	E-Book Learning App
+Framework Backend	Laravel 12.x
+Framework CSS	TailwindCSS + DaisyUI
+Database	MySQL
+Build Tool	Vite
+Auth System	Laravel Breeze (Session Based)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+📘 Fitur Utama
+✅ Login & Register System
+Autentikasi menggunakan session, lengkap dengan validasi & proteksi route.
 
-## Learning Laravel
+✅ Dashboard eBook (One Page Application)
+Menampilkan list data dari database dengan 3 kolom utama:
+No
+Nama eBook
+Action (Lihat / Delete)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+✅ PDF Viewer (tanpa tab baru)
+Menampilkan PDF langsung di halaman dashboard dengan batasan:
+Tidak bisa di-download
+Tidak bisa di-copy
+Tidak bisa di-klik kanan
+Jika user pindah tab, muncul popup peringatan
+Terdapat watermark transparan: CONFIDENTIAL • VIEW ONLY
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+✅ Database Seeder Otomatis
+Seeder otomatis menambahkan 3 eBook:
+Soal Assessment Siswa Kelas X
+Soal Assessment Siswa Kelas XI
+Soal Assessment Siswa Kelas XII
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+✅ UI/UX Modern & Responsif
+Desain elegan, clean, dan profesional dengan komponen Tailwind & DaisyUI.
 
-## Laravel Sponsors
+🏗️ Struktur Folder Utama
+ebook-app/
+│
+├── app/
+│   ├── Http/Controllers/EbookController.php
+│   └── Models/Ebook.php
+│
+├── database/
+│   ├── migrations/xxxx_create_ebooks_table.php
+│   └── seeders/EbookSeeder.php
+│
+├── public/
+│   ├── ebooks/
+│   │   ├── Soal-Assessment-Siswa-Kelas-X.pdf
+│   │   ├── Soal-Assessment-Siswa-Kelas-XI.pdf
+│   │   └── Soal-Assessment-Siswa-Kelas-XII.pdf
+│
+├── resources/
+│   ├── js/app.js
+│   ├── views/
+│   │   ├── dashboard.blade.php
+│   │   ├── auth/
+│   │   │   ├── login.blade.php
+│   │   │   └── register.blade.php
+│   │   └── layouts/app.blade.php
+│
+├── routes/web.php
+├── tailwind.config.js
+├── package.json
+├── composer.json
+└── README.md
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2️⃣ Install Dependencies
+composer install
+npm install
 
-### Premium Partners
+3️⃣ Setup Environment
+cp .env.example .env
+php artisan key:generate
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Edit .env:
+DB_DATABASE=ebook_app
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Contributing
+4️⃣ Migrasi & Seeder Database
+php artisan migrate --seed
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5️⃣ Jalankan Server
+php artisan serve
+npm run dev
 
-## Code of Conduct
+Akses di browser:
+http://127.0.0.1:8000
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+🧠 Skema Database
+Tabel: ebooks
 
-## Security Vulnerabilities
+Kolom	Tipe	Keterangan
+id	BIGINT	Primary Key
+title	VARCHAR(255)	Nama eBook
+file_path	VARCHAR(255)	Lokasi file PDF
+created_at	TIMESTAMP	Otomatis
+updated_at	TIMESTAMP	Otomatis
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+🖥️ Tampilan Utama
+🔹 Login Page
+Desain minimalis dengan Tailwind + gradient background
+Validasi field otomatis
+🔹 Dashboard Page
+Tabel daftar eBook + panel viewer PDF di kanan.
+Jika user klik “Lihat”, PDF tampil di area viewer dengan watermark dan proteksi.
+🔹 Watermark PDF
+“Nama Pemilik” muncul transparan di tengah dokumen.
 
-## License
+🧾 Rincian Teknis
+PDF di-render dengan PDF.js
+Event visibilitychange mendeteksi perpindahan tab
+Right-click & select event dinonaktifkan (contextmenu, selectstart)
+Rendering PDF dilakukan via Canvas API
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+🔐 Fitur Keamanan
+Proteksi	Deskripsi
+No Download	PDF tidak dapat disimpan oleh user
+No Copy Text	Fitur select text dinonaktifkan
+No Right-Click	Context menu dimatikan
+Tab Warning	Peringatan muncul jika user berpindah tab
+View Only Mode	Watermark transparan otomatis tampil di PDF
+
+🧩 Akun Default (Jika Seeder User Aktif)
+Email: test@gmail.com
+Password: password
+
+📦 Teknologi yang Digunakan
+Komponen	Teknologi
+Framework	Laravel 12.x
+Frontend	TailwindCSS + DaisyUI
+Viewer	PDF.js
+Database	MySQL
+Auth	Laravel Breeze
+Build Tool	Vite
+Server	PHP 8.2 (XAMPP / Artisan Serve)
+Source Code (Laravel Project)
+Database SQL (auto via Seeder)
+Link Repository GitHub
+File PDF di folder /public/ebooks
+
+🧑‍💻 Developer
+Nama  : Nur Wardani
+Email : nurwardani03@gmail.com
+
+🔗 LinkedIn: nur-wardani
+
+🪪 Lisensi
+Proyek ini dikembangkan untuk kebutuhan FullStack Developer Assessment dan pembelajaran akademik.
+Lisensi mengikuti MIT License Laravel, Tidak digunakan untuk hal lain.
